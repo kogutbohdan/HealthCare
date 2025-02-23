@@ -1,0 +1,17 @@
+.registretion,.avtorization {
+    display: none;
+}
+.activation,form{
+    display: flex;
+    justify-content: center;
+}
+
+
+form{
+  flex-direction: column;  
+}
+
+.conteiner{
+    width:1400px;
+    margin:0 auto;
+}
