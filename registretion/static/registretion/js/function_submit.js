@@ -13,7 +13,8 @@ const functionsSubmit={
         const json = await response.json();
         if (json["page"]){
             renderHtml(json["page"],main);
+        }else if (json["errors"]){
+            printError(json["errors"],form);
         }
-        console.log(json);
     }
 }

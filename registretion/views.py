@@ -36,7 +36,7 @@ class UserRegistrationsView(View):
             )
             form.save()
             return JsonResponse({"page":"/check_code"},status=200)
-        return JsonResponse(form.errors,status=400)
+        return JsonResponse({"errors":form.errors},status=400)
 
 class ToBackView(View):
     @check_request
