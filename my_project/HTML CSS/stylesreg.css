@@ -1,0 +1,107 @@
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(to right, #ffffff, #6D5AE7);
+}
+.container {
+    display: flex;
+    width: 500px;
+    height: 650px;
+    background: white;
+    border-radius: 50px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+
+}
+
+.login-box {
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+
+input {
+    width: 85%;
+    padding: 14px;
+    font-size: 18px;
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 15px;
+    margin-bottom: 0px;
+}
+.login-btn {
+    width: 65%;
+    padding: 12px;
+    font-size: 35px;
+    background: #6D5AE7;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: filter 0.1s ease;
+    margin-bottom: 0px;
+}
+
+.login-btn:hover {
+    filter: brightness(0.95);
+    color: rgb(255, 255, 255);
+}
+
+
+.register-btn {
+    margin-bottom: 5px;
+    width: 35%;
+    padding: 12px;
+    font-size: 18px;
+    background: white;
+    border: 1px solid black;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: filter 0.3s ease;
+}
+
+.register-btn:hover {
+    filter: brightness(0.95);
+    color: black;
+}
+
+
+
+.social-login {
+    display: flex;
+    gap: 15px;
+}
+.social-login img {
+    width: 45px;
+    cursor: pointer;
+}
+
+.hc {
+    font-size: 177px;
+    color: #8A8A8A;
+    position: absolute;
+    left: -330px;
+    display: flex;
+    width: 903px;
+    height: 250px;
+    background: white;
+    border-radius: 0px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+    transform: rotate(-90deg);
+    font-weight: bold;
+    box-shadow: 0px 30px 40px rgba(255, 255, 255, 0.2);
+}
