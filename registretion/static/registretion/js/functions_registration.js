@@ -3,6 +3,7 @@ function printError(error,form){
         const p=document.createElement("p")
         p.classList.add("error");
         p.textContent=error[errorKey];
+        console.log(errorKey,":",form.elements[errorKey]);
         form.elements[errorKey].after(p);
         form.elements[errorKey].classList.add("error-field")
 

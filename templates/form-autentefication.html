@@ -1,0 +1,9 @@
+{%extends './form-base.html'%}
+{%load static%}
+{%block next-content%}
+<a class="not-active" href="{{link}}">{{text_link}}</a>
+<div class="social-login">
+    <img src="{%static '/registretion/img/google.png'%}" alt="Google">
+    <img src="{%static '/registretion/img/facebook.png'%}" alt="Facebook">
+</div>
+{%endblock%}

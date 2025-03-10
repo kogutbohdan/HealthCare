@@ -7,4 +7,4 @@ class MyUser(AbstractUser):
     aime=models.TextField(max_length=100,default="")
     many=models.IntegerField(default=0)
     rank=models.IntegerField(default=0)
-    code=models.CharField(max_length=6,default="-1")
+    

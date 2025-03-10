@@ -1,58 +1,48 @@
 from django.views.generic import TemplateView, View
-from django.shortcuts import render,redirect
 from django.http import JsonResponse
 from .forms import RegistaritionForm
-from my_project.decorators.checked_request import check_request
 from random import randint
 from django.core.mail import send_mail
-from .models import MyUser
+from verification.models import UserVerification
 from django.db.models import Q
+from dinamic_view.views import PageView
 
 class IndexView(TemplateView):
     template_name = "base.html"
 
-
-def create_view(path,**params):
-    class AuthenticationView(View):
-        @check_request
-        def get(self, request, *args, **kwargs):
-            return render(request, path,params)
-    return AuthenticationView
-    
         
    
 class UserRegistrationsView(View):
+    def __save_user(self,code,form_data):
+        UserVerification.objects.filter(username=form_data["username"]).delete()
+        UserVerification.objects.create(code=code, 
+                                            email=form_data["email"], 
+                                            password=form_data["password1"],
+                                            username=form_data["username"])
     def post(self, request, *args, **kwargs):
-        post=request.POST.copy()
-        post["code"]=str(randint(100000,999999))
-        form = RegistaritionForm(post)
+        code=str(randint(100000,999999))
+        form = RegistaritionForm(request.POST)
         if form.is_valid():
-            request.session["username"]=post["username"]
+            request.session["form_data"]=form.cleaned_data
             send_mail(
                 "Код підтвердження",
-                f"Ваш код підтвердження: {post['code']}",
+                f"Ваш код підтвердження: {code}",
                 "bodakogut1000@gmail.com",
-                [post["email"]]
+                [request.POST["email"]]
             )
-            form.save()
+            self.__save_user(code, form.cleaned_data)
             return JsonResponse({"page":"/check_code"},status=200)
         return JsonResponse({"errors":form.errors},status=400)
 
-class ToBackView(View):
-    @check_request
-    def get(self, request, *args, **kwargs):
-        print(request.session["username"])
-        MyUser.objects.filter(username=request.session["username"]).filter(~Q(code="0")).delete()
-        return redirect("/registration/")
 
+registrationView=PageView("form-registaration.html",title="Регістрація",
+                                         url="save_user_bd/", 
+                                         text="Реєстрація",
+                                         text_link="Вхід",
+                                         link="autorization/")
 
-RegistrationView=create_view("form.html",title="Регістрація", 
-                                         registretion=True, 
-                                         text="регістрація",
-                                         function="registration")
+authorizationView=PageView("form-autorization.html",title="Авторизація",  
+                                          text_link="Реєстрація",
+                                          text="Вхід",
+                                          link="registration/")
 
-AuthorizationView=create_view("form.html",title="Авторизація", 
-                                          registretion=False, 
-                                          text="авторизація")
-
-FormVarificationView = create_view("form_varification.html",text="відправити")

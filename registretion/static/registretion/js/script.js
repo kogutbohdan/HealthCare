@@ -17,8 +17,8 @@ main.addEventListener("click",e=>{
 main.addEventListener("submit",e=>{
     e.preventDefault();
     const func=e.target.dataset.function
-    if(e.target.dataset.function){
-        functionsSubmit[func](e.target,main);
+    if(e.target.action){
+        submit(e.target.action,e.target,main);
         e.target.reset();
     }
 });

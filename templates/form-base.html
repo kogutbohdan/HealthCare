@@ -1,0 +1,17 @@
+<div class="body">
+    <div class = "hc">
+        <p>HealthCare</p>
+    </div>
+    <div class="container-form">
+        <div class="login-box">
+            <form action="{{url}}">
+                {% csrf_token %}
+                {%block form%}
+                {%endblock%}
+                <button class="active" type="submit">{{text}}</button>
+            </form>
+            {%block next-content%}
+            {%endblock%}
+        </div>
+    </div>
+</div>
