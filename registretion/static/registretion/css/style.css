@@ -137,7 +137,7 @@ input {
 
 .hc p{
     position:relative;
-    transform: rotate(-90deg) translateX(-770px);
+    transform: rotate(-90deg) translateX(calc(-50vh - 160%));
 }
 
 

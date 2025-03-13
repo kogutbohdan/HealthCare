@@ -6,6 +6,7 @@ from django.core.mail import send_mail
 from verification.models import UserVerification
 from django.db.models import Q
 from dinamic_view.views import PageView
+from django.contrib.auth import authenticate, login
 
 class IndexView(TemplateView):
     template_name = "base.html"
@@ -19,20 +20,36 @@ class UserRegistrationsView(View):
                                             email=form_data["email"], 
                                             password=form_data["password1"],
                                             username=form_data["username"])
+    def __send_mail(self,code,request):
+        send_mail(
+                "Код підтвердження",
+                f"Ваш код підтвердження: {code}",
+                "bodakogut1000@gmail.com",
+                [request.POST["email"]]
+        )
     def post(self, request, *args, **kwargs):
         code=str(randint(100000,999999))
         form = RegistaritionForm(request.POST)
         if form.is_valid():
             request.session["form_data"]=form.cleaned_data
-            send_mail(
-                "Код підтвердження",
-                f"Ваш код підтвердження: {code}",
-                "bodakogut1000@gmail.com",
-                [request.POST["email"]]
-            )
+            self.__send_mail(code, request)
             self.__save_user(code, form.cleaned_data)
             return JsonResponse({"page":"/check_code"},status=200)
         return JsonResponse({"errors":form.errors},status=400)
+    
+
+class AurhorizationView(View):
+    def post(self, request, *args, **kwargs):
+        username=request.POST["username"]
+        password=request.POST["password1"]
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return JsonResponse({"page":"/home"},status=200)
+        return JsonResponse({"errors":{
+            "username":["Невірний логін"],
+            "password1":["або невірний пароль"]
+        }},status=400)
 
 
 registrationView=PageView("form-registaration.html",title="Регістрація",
@@ -43,6 +60,7 @@ registrationView=PageView("form-registaration.html",title="Регістраці�
 
 authorizationView=PageView("form-autorization.html",title="Авторизація",  
                                           text_link="Реєстрація",
+                                          url="login/",
                                           text="Вхід",
                                           link="registration/")
 

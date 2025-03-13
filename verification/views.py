@@ -27,4 +27,4 @@ class UserVerificationView(View):
         }},status=400)
 
 
-formVarificationView = PageView("form_varification.html",text="Відправити",url="/verification_code")
+formVarificationView = PageView("form_varification.html",text="Відправити",url="verification_code/")
