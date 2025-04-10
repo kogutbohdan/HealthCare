@@ -7,7 +7,7 @@ from verification.models import UserVerification
 from django.db.models import Q
 from dinamic_view.views import PageView
 from django.contrib.auth import authenticate, login
-
+from .models import MyUser
 class IndexView(TemplateView):
     template_name = "base.html"
 
@@ -45,10 +45,11 @@ class AurhorizationView(View):
         user = authenticate(username=username, password=password)
         if user is not None:
             login(request, user)
+            request.session["user_id"]=MyUser.objects.get(username=username).id
             return JsonResponse({"page":"/home"},status=200)
         return JsonResponse({"errors":{
-            "username":["Невірний логін"],
-            "password1":["або невірний пароль"]
+            "username":["Невірний логін або невірний пароль"],
+            "password1":[]
         }},status=400)
 
 
@@ -56,7 +57,8 @@ registrationView=PageView("form-registaration.html",title="Регістраці�
                                          url="save_user_bd/", 
                                          text="Реєстрація",
                                          text_link="Вхід",
-                                         link="autorization/")
+                                         link="autorization/",
+                                         callback_redirect=lambda request:(request.session["user_id"],"/personal_office"))
 
 authorizationView=PageView("form-autorization.html",title="Авторизація",  
                                           text_link="Реєстрація",
