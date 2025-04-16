@@ -12,7 +12,7 @@ function getToken(form){
     return form.querySelector("[name=csrfmiddlewaretoken]").value;
 }
 
-async function sentForm(form,path){
+async function sentForm(path,form){
     const formData = new FormData(form);
         const response = await fetch(path, {
             method: 'POST',
@@ -34,6 +34,7 @@ function handleJsonResponse(json, main, form) {
 }
 
 const submit=async (path,form,main) => {
-    const json=await sentForm(form,path)
+    const json=await sentForm(path,form)
     handleJsonResponse(json, main, form)
+    form.reset();
 }

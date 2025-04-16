@@ -58,7 +58,7 @@ registrationView=PageView("form-registaration.html",title="Регістраці�
                                          text="Реєстрація",
                                          text_link="Вхід",
                                          link="autorization/",
-                                         callback_redirect=lambda request:(request.session["user_id"],"/personal_office"))
+                                         callback_redirect=lambda request:(request.session.get("user_id"),"/personal_office"))
 
 authorizationView=PageView("form-autorization.html",title="Авторизація",  
                                           text_link="Реєстрація",

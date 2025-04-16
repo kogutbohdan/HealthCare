@@ -1,16 +1,27 @@
 {%extends "./base-page.html"%}
 {%block content-page%}
-<div class ="icon-conteiner">
-    <div class="icon">
-        
+<div class="content-block">
+    <div class ="icon-conteiner">
+        <div class="icon">
+            
+        </div>
     </div>
-</div>
-<div class="exe-box">
-    <h1 class="place">Place in rating:</h1>
-</div>
-<div class="container header">
-    <button href="mainpage.html">Main</button>
-    <button class="active">Market</button>
-    <button>Rating</button>
+    <div class="exe-box">
+        <h1 class="place">Place in rating:{{rating}}</h1>
+    </div>
+    <div class="exe-box">
+        <h1 class="place">Name:{{username}}</h1>
+    </div>
+    <form action="save_size_user/" class="exe-box">
+        {%csrf_token%}
+        <p class="place">weight:<input class="place" value="{{weight}}" type="text" name="weight"></p>
+        <p class="place">height:<input class="place" value="{{height}}" type="text" name="height"></p>
+        <p class="place">aime:<input class="place" value="{{aime}}" type="aime" name="aime"></p>
+        <button type="submit" class="btn">Save</button>
+    </form>
+    <form class="exe-box">
+        <p class="place">chage password:<input type="password" name="password"></p>
+        <button type="submit" class="btn">Change password</button>
+    </form>
 </div>
 {%endblock%}

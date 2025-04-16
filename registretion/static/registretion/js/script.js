@@ -16,9 +16,7 @@ main.addEventListener("click",e=>{
 
 main.addEventListener("submit",e=>{
     e.preventDefault();
-    const func=e.target.dataset.function
     if(e.target.action){
-        submit(e.target.action,e.target,main);
-        e.target.reset();
+        submits[e.target.action.replace("http://127.0.0.1:8000/","")](e.target.action,e.target,main);
     }
 });
