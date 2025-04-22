@@ -1,6 +1,8 @@
 const submits={
-    "autorization/":submit,
+    "save_user_bd/":submit,
     "login/":submit,
     "verification_code/":submit,
-    "save_size_user/":sentForm
+    "save_size_user/":sentForm,
+    "save_password/":changePassword,
+    "exit/":exit
 }

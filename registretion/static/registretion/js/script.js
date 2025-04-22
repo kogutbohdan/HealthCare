@@ -11,6 +11,8 @@ main.addEventListener("click",e=>{
         renderHtml(e.target.href,main);
         console.log(e.target.href);
     }
+    console.log(e.target.classList)
+        
 })
 
 

@@ -19,9 +19,14 @@
         <p class="place">aime:<input class="place" value="{{aime}}" type="aime" name="aime"></p>
         <button type="submit" class="btn">Save</button>
     </form>
-    <form class="exe-box">
+    <form action="save_password/" class="exe-box">
+        {%csrf_token%}
         <p class="place">chage password:<input type="password" name="password"></p>
         <button type="submit" class="btn">Change password</button>
+    </form>
+    <form action="exit/" class="exe-box">
+        {%csrf_token%}
+        <button class="btn exit">Exit</button>
     </form>
 </div>
 {%endblock%}

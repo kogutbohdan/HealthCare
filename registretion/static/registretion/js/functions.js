@@ -28,6 +28,8 @@ async function sentForm(path,form){
 function handleJsonResponse(json, main, form) {
     if (json["page"]) {
         renderHtml(json["page"], main);
+        return
+        
     } else if (json["errors"]) {
         printError(json["errors"], form);
     }

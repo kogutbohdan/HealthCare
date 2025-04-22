@@ -5,6 +5,12 @@ from django.views import View
 from .pages_config import pages
 from registretion.models import MyUser
 from .callbacks import draw_personall_data
+from django.contrib.auth.password_validation import validate_password
+from django.core.exceptions import ValidationError
+from django.contrib.sessions.models import Session
+from django.contrib.auth import logout
+
+
 
 class RatingsView(View):
     def post(self,request,*args,**kwargs):
@@ -16,6 +22,7 @@ class SaveSizeUserView(View):
         weight=float(request.POST.get("weight"))
         height=float(request.POST.get("height"))
         aime=request.POST.get("aime")
+        print(weight)
         user=MyUser.objects.get(id=request.session.get("user_id"))
         user.weight=weight
         user.height=height
@@ -29,7 +36,25 @@ class ChangePasswordView(View):
     def post(self,request):
         password=request.POST.get("password")
         user=MyUser.objects.get(id=request.session.get("user_id"))
-        user.set_password(password)
+        try:
+            validate_password(password, user)
+            user.set_password(password)
+            user.save()
+            return JsonResponse({
+                 "status":"ok"
+            })
+        except ValidationError as e:
+            return JsonResponse({
+                "status": "error",
+                "errors":{
+                    "password":[e.messages]
+                }
+            }, status=400)
+        
+class ExitView(View):
+    def post(self,request):
+        logout(request)
+        request.session.flush()
         return JsonResponse({
             "status":"ok"
         })

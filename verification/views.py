@@ -21,7 +21,7 @@ class UserVerificationView(View):
             request.session["user_id"]=form.save().id
             user.delete()
             del request.session["form_data"]
-            return JsonResponse({"page":"/home"},status=200)
+            return JsonResponse({"page":"/personal_office"},status=200)
         return JsonResponse({"errors":{
             "code":["Невірний код"]
         }},status=400)

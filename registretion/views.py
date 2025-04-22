@@ -46,10 +46,10 @@ class AurhorizationView(View):
         if user is not None:
             login(request, user)
             request.session["user_id"]=MyUser.objects.get(username=username).id
-            return JsonResponse({"page":"/home"},status=200)
+            return JsonResponse({"page":"/personal_office"},status=200)
         return JsonResponse({"errors":{
-            "username":["Невірний логін або невірний пароль"],
-            "password1":[]
+            "username":["Невірний логін"],
+            "password1":[" або невірний пароль"]
         }},status=400)
 
 
