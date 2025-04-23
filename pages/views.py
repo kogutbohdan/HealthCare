@@ -1,15 +1,14 @@
-from django.shortcuts import render
 from dinamic_view.views import PageView
-from django.http import JsonResponse,HttpResponse
+from django.http import JsonResponse
 from django.views import View
 from .pages_config import pages
 from registretion.models import MyUser
-from .callbacks import draw_personall_data
+from .callbacks import*
 from django.contrib.auth.password_validation import validate_password
 from django.core.exceptions import ValidationError
-from django.contrib.sessions.models import Session
 from django.contrib.auth import logout
-
+from .models import*
+from django.shortcuts import redirect
 
 
 class RatingsView(View):
@@ -58,13 +57,25 @@ class ExitView(View):
         return JsonResponse({
             "status":"ok"
         })
+    
+class BuyIcon(View):
+    def post(self,request,id):
+        user=MyUser.objects.get(id=request.session.get("user_id"))
+        icon=ShopModel.objects.get(id=id)
+        if user.many>=icon.costs:
+            user.many-=icon.costs
+            user.things.add(icon)
+            user.save()
+        return redirect("shop/")
+
 
 pages_views=[PageView("home.html",links=pages),
            PageView("personal_office.html",links=pages
                     ,callback_dinamic_params=draw_personall_data),
            PageView("rating.html",links=pages),
            PageView("activity.html",links=pages),
-           PageView("shop.html",links=pages)]
+           PageView("shop.html",links=pages,
+                    callback_dinamic_params=draw_shop)]
 
 for i in range(len(pages)):
     pages[i]["view"]=pages_views[i]

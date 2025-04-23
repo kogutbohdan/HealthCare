@@ -134,3 +134,7 @@ EMAIL_USE_TLS = True  # Використання TLS
 EMAIL_HOST_USER = "bodakogut1000@gmail.com"  # Ваша пошта
 EMAIL_HOST_PASSWORD = "bivc swhi pswg jiml"  # Пароль або App Password
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER 
+
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

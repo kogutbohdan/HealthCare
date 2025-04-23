@@ -1,4 +1,5 @@
 from registretion.models import MyUser
+from .models import ShopModel
 
 def draw_personall_data(request,params):
     user=MyUser.objects.get(id=request.session.get("user_id"))
@@ -7,3 +8,9 @@ def draw_personall_data(request,params):
     params["weight"]=user.weight
     params["height"]=user.height
     params["aime"]=user.aime
+
+def draw_shop(request,params):
+    user=MyUser.objects.get(id=request.session.get("user_id"))
+    icones=list(ShopModel.objects.all())
+    params["many"]=user.many
+    params["icons"]=icones

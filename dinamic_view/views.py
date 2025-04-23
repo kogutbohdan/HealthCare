@@ -1,6 +1,6 @@
 from decorators.checked_request import check_request
-from django.shortcuts import render
-from django.shortcuts import redirect
+from django.shortcuts import render,redirect
+
 
 class PageView:
     def __init__(self, path,callback_redirect=None,callback_dinamic_params=None, **params):

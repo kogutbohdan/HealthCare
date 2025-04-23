@@ -127,7 +127,60 @@ form.exe-box{
     
 }
 
-.content-block{
-    height: 63%;
+.content-block,.grid{
     overflow: auto;
+    height: 63%;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.item {
+    width: 220px;
+    height: 220px;
+    background-color: #f2f2f2;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    margin-left: 150px;
+}
+
+.first-item{
+    margin-top:80px;
+}
+
+.buy-button:hover{
+    color:#4a6fd1;
+}
+
+.buy-button:active{
+    color:#4a6fd1;
+    background:rgba(74, 111, 209, 0.6);
+}
+
+.buy-button,.coin-counter{
+    font-weight: bold;
+    color: #4a8eff;
+    font-size: 24px;
+}
+
+.buy-button{
+    background: rgba(0,0,0,0);
+    border:0px;
+}
+
+.icon-img{
+    width: 110px;
+    height: 110px;
+    margin-bottom: 8px;
+}
+
+.buy-button{
+    cursor: pointer;
 }

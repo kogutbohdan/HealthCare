@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.contrib import admin
+from pages.models import ShopModel
 
 
 class MyUser(AbstractUser):
@@ -10,6 +11,8 @@ class MyUser(AbstractUser):
     many=models.IntegerField(default=0)
     rating=models.IntegerField(default=0)
     points=models.IntegerField(default=0)
+    things=models.ManyToManyField(ShopModel,blank=True)
+
 
 admin.site.register(MyUser)
     
