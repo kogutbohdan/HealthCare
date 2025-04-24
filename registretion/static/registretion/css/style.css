@@ -1,0 +1,154 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+.registretion,.avtorization {
+    display: none;
+}
+.activation,form{
+    display: flex;
+    justify-content: center;
+}
+
+
+form{
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    width: 85%;
+}
+
+.conteiner{
+    width:1400px;
+    margin:0 auto;
+}
+
+.error{
+    color: red;
+    margin-bottom: 5px;
+}
+
+.error-field{
+    border: 1px solid red;
+}
+
+.body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    background: linear-gradient(to right, #ffffff, #6D5AE7);
+}
+
+.body,body,html,main{
+    height: 100%;
+}
+
+
+.container-form{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-box {
+    min-width: 500px;
+    min-height: 650px;
+    padding: 25px;
+    background: white;
+    border-radius: 50px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+form, .login-box{
+    gap: 20px;
+}
+
+input {
+    width: 100%;
+    padding: 14px;
+    font-size: 18px;
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 15px;
+    margin-bottom: 0px;
+}
+
+.active,.submit {
+    width: 276px;
+    font-size: 35px;
+    background: #6D5AE7;
+    color: white;
+    border: none;
+    transition: filter 0.1sease;
+}
+
+
+.not-active {
+    margin-bottom: 5px;
+    width: 148px;
+    font-size: 18px;
+    background: white;
+    border: 1px solid black;
+    transition: filter 0.3sease;
+    color:#000
+}
+
+.active,.not-active,.submit{
+    border-radius: 14px;
+    padding: 12px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.active,.not-active,.submit,.social-login img {
+    cursor: pointer;
+}
+
+.active:hover,.not-active:hover,.submit:hover {
+    filter: brightness(0.95);
+}
+
+.social-login {
+    display: flex;
+    gap: 15px;
+}
+
+.social-login img {
+    width: 45px;
+}
+
+.hc {
+    overflow: hidden;
+    font-size: 177px;
+    color: #8A8A8A;
+    width: 203px;
+    height: 100%;
+    background: white;
+    padding: 25px;
+    padding-top: 0;
+    padding-bottom:0;
+    font-weight: bold;
+    box-shadow: inset -20px 0px 30px #8A8A8A;
+}
+
+.hc p{
+    position:relative;
+    transform: rotate(-90deg) translateX(calc(-50vh - 160%));
+}
+
+
+.submit{
+    width: 100%;
+}
+
+.not-activate{
+    display:none;
+}
+
+.activate{
+    display:block;
+}

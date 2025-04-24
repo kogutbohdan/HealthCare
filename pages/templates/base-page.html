@@ -1,0 +1,11 @@
+<div class="pages-conteiner">
+    <div class="main-box">
+        <header class="container">
+            {% for link in links%}
+            <a class="btn" href="{{link.url}}">{{link.name}}</a>
+            {%endfor%}
+        </header>
+        {%block content-page%}
+        {%endblock%}
+    </div>
+</div>

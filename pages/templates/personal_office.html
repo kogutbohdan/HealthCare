@@ -1,0 +1,35 @@
+{%extends "./base-page.html"%}
+{%block content-page%}
+<div class="content-block">
+    <div class ="icon-conteiner">
+        <img src="{{icon}}" id="icon" class="icon">
+    </div>
+    <form id="icons-form" action="" class="icons-form not-activate">
+        {%for thing in things%}
+        <img src="{{thing.image.url}}" alt="">
+        {%endfor%}
+    </form>
+    <div class="exe-box">
+        <h1 class="place">Place in rating:{{rating}}</h1>
+    </div>
+    <div class="exe-box">
+        <h1 class="place">Name:{{username}}</h1>
+    </div>
+    <form action="save_size_user/" class="exe-box">
+        {%csrf_token%}
+        <p class="place">weight:<input class="place" value="{{weight}}" type="text" name="weight"></p>
+        <p class="place">height:<input class="place" value="{{height}}" type="text" name="height"></p>
+        <p class="place">aime:<input class="place" value="{{aime}}" type="aime" name="aime"></p>
+        <button type="submit" class="btn">Save</button>
+    </form>
+    <form action="save_password/" class="exe-box">
+        {%csrf_token%}
+        <p class="place">chage password:<input type="password" name="password"></p>
+        <button type="submit" class="btn">Change password</button>
+    </form>
+    <form action="exit/" class="exe-box">
+        {%csrf_token%}
+        <button class="btn exit">Exit</button>
+    </form>
+</div>
+{%endblock%}
