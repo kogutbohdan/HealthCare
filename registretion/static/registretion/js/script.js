@@ -20,6 +20,9 @@ main.addEventListener("click",e=>{
     }
     if(e.target.parentElement.id==="icons-form"){
         e.target.parentElement.classList.remove("activate")
+        e.target.parentElement.previousElementSibling.children[0].src=e.target.src
+        e.target.parentElement.children[1].value=e.target.src
+        e.target.parentElement.dispatchEvent(new Event('submit'))
     }
     console.log(e.target.classList)
         
