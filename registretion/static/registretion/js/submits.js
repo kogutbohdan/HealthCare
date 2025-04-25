@@ -5,5 +5,6 @@ const submits={
     "save_size_user/":sentForm,
     "save_password/":changePassword,
     "exit/":exit,
-    "buy_icon/":buyIcon
+    "buy_icon/":buyIcon,
+    "change_icon/":sentForm,
 }

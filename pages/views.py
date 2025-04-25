@@ -73,6 +73,16 @@ class BuyIcon(View):
         return JsonResponse({
             "status":"error"
         })
+    
+class ChangeIconView(View):
+    def post(self,request):
+        user=MyUser.objects.get(id=request.session.get("user_id"))
+        user.icon=request.POST.get("imageUrl")
+        user.save()
+        return JsonResponse({
+            "status":"ok"
+        })
+
 
 
 pages_views=[PageView("home.html",links=pages),

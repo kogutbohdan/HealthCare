@@ -22,7 +22,7 @@ main.addEventListener("click",e=>{
         e.target.parentElement.classList.remove("activate")
         e.target.parentElement.previousElementSibling.children[0].src=e.target.src
         e.target.parentElement.children[1].value=e.target.src
-        e.target.parentElement.dispatchEvent(new Event('submit'))
+        e.target.parentElement.dispatchEvent(new Event('submit',{ bubbles: true, cancelable: true }))
     }
     console.log(e.target.classList)
         
