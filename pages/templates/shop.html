@@ -2,7 +2,7 @@
 {%block content-page%}
 <div class="grid">
     {%for icon in icons%}
-    {% if icon.id == 5 %}
+    {% if forloop.counter0 == 4 %}
     <div class="item {% if forloop.counter0 < 3 %}first-item{% endif %}">
         <div class="">
           Your Coins:

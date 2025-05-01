@@ -32,6 +32,7 @@ main.addEventListener("click",e=>{
 main.addEventListener("submit",e=>{
     e.preventDefault();
     if(e.target.action){
+        console.log(e.target.action.replace("http://127.0.0.1:8000/","").replace(/\d+/g, ''))
         submits[e.target.action.replace("http://127.0.0.1:8000/","").replace(/\d+/g, '')](e.target.action,e.target,main);
     }
 });

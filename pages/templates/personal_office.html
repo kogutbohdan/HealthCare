@@ -17,6 +17,19 @@
     <div class="exe-box">
         <h1 class="place">Name:{{username}}</h1>
     </div>
+    <div class="exe-box statistic">
+        {%for statistics in statistics_list%}
+        <div class="pla">
+            <ul class="place">
+                <li>Назва вправи {{statistics.task.name}}</li>
+                <li>Скільки зроблено {{statistics.number}}</li>
+                <li>Який раз ви виконуєте вправу {{statistics.counts}}</li>
+                <li>Cкільки ви получили монет {{statistics.coins}}</li>
+                <li>Cкільки ви получили балів {{statistics.points}}</li>
+            </ul>
+        </div>
+        {%endfor%}
+    </div>
     <form action="save_size_user/" class="exe-box">
         {%csrf_token%}
         <p class="place">weight:<input class="place" value="{{weight}}" type="text" name="weight"></p>

@@ -1,3 +1,24 @@
 {%extends "./base-page.html"%}
 {%block content-page%}
+<div class="content-block">
+{%for task in tasks%}
+<div class="exercise-card">
+    <h2>Exercises</h2>
+    <img src="{{task.img}}" alt="Exercise" class="exercise-image">
+    <div class="instruction-list">
+      <ol>
+        {%for text in task.text%}
+        <li>{{text}}</li>
+        {%endfor%}
+      </ol>
+    </div>
+    <h2>За цезавдання +{{task.many}} монет +{{task.points}} очок</h2>
+    <form action="save_task/{{task.id}}" class="input-section">
+      {%csrf_token%}
+      <input name="number" type="text" placeholder="Input">
+      <button class="save-button btn">Enter</button>
+    </form>
+</div>
+{%endfor%}
+</div>
 {%endblock%}

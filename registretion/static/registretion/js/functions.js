@@ -29,14 +29,16 @@ function handleJsonResponse(json, main, form) {
     if (json["page"]) {
         renderHtml(json["page"], main);
         return
-        
-    } else if (json["errors"]) {
-        printError(json["errors"], form);
     }
+    if(json["errors"]){
+        printError(json["errors"], form);
+        return
+    }
+    return true
 }
 
 const submit=async (path,form,main) => {
     const json=await sentForm(path,form)
-    handleJsonResponse(json, main, form)
     form.reset();
+    return handleJsonResponse(json, main, form)
 }

@@ -3,8 +3,9 @@ const submits={
     "login/":submit,
     "verification_code/":submit,
     "save_size_user/":sentForm,
-    "save_password/":changePassword,
+    "save_password/":submit,
     "exit/":exit,
     "buy_icon/":buyIcon,
     "change_icon/":sentForm,
+    "save_task/":saveTask
 }

@@ -8,5 +8,6 @@ urlpatterns=[
     path("save_password/",ChangePasswordView.as_view(),name="save_user"),
     path("exit/",ExitView.as_view(),name="exit"),
     path("buy_icon/<int:id>",BuyIcon.as_view(),name="buy"),
-    path("change_icon/",ChangeIconView.as_view(),name="change_icon")
+    path("change_icon/",ChangeIconView.as_view(),name="change_icon"),
+    path("save_task/<int:id>",SaveTask.as_view(),name="save_task")
 ]

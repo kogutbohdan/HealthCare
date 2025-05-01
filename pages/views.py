@@ -83,13 +83,33 @@ class ChangeIconView(View):
             "status":"ok"
         })
 
+class SaveTask(View):
+    def post(self,request,id):
+        user=MyUser.objects.get(id=request.session.get("user_id"))
+        number=request.POST.get("number")
+        if number.isdigit():
+            number=int(number)
+            task=user.tasks.get(id=id)
+            user.many+=task.many*number
+            user.points+=task.points*number
+            user.tasks.remove(task)
+            user.save()
+            previus_statistics=Statistics.objects.filter(task=task).order_by("-counts").first()
+            statistic=Statistics(number=number,counts=previus_statistics.counts+1 if previus_statistics else 1,task=task,user=user,coins=task.many*number,points=task.points*number)
+            statistic.save()
+            return JsonResponse({
+                "status":"ok"
+            })
+        return JsonResponse({
+            "errors":["Поле пусте або нечисло або відємне число"]
+        })
 
 
 pages_views=[PageView("home.html",links=pages),
            PageView("personal_office.html",links=pages
                     ,callback_dinamic_params=draw_personall_data),
            PageView("rating.html",links=pages),
-           PageView("activity.html",links=pages),
+           PageView("activity.html",links=pages,callback_dinamic_params=draw_activity),
            PageView("shop.html",links=pages,
                     callback_dinamic_params=draw_shop)]
 

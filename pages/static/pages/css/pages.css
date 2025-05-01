@@ -20,7 +20,7 @@ header {
 .main-box {
     position: relative;
     min-width: 1361px;
-    height: 87%;
+    height: 90%;
     background: rgb(255, 255, 255);
     border-radius: 40px;
     box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15);
@@ -76,6 +76,7 @@ header {
     background-color: #ffffff;  /* Світлий фон */
     width: 1100px;
     min-height: 18%;
+    flex-direction: column;
 
     border-radius: 80px;  /* Заокруглені кути */
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);  /* Тінь для глибини */
@@ -89,6 +90,11 @@ form.exe-box{
     padding-top:30px;
 }
 
+.statistic{
+    min-width: 1100px;
+    max-width: 100%;
+}
+
 .place {
     font-size: 42px;
     font-weight: bold;
@@ -99,11 +105,12 @@ form.exe-box{
 .pla {
     background-color: #e4f0ff;  /* Світлий фон */
     padding-right: 325px;  /* Відступи всередині */
-    height: 60px;
+    min-height: 60px;
     margin-top: 20px;
     border-radius: 50px;  /* Заокруглені кути */
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);  /* Тінь для глибини */
-    width: 400px;  /* Обмеження ширини */
+    min-width: 400px;  /* Обмеження ширини */
+    padding:100px;
 }
 
 .top-box {
@@ -189,5 +196,79 @@ form.exe-box{
 }
 
 
+.exercise-card {
+
+    background-color: white;
+    padding: 20px;
+    border-radius: 30px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    width: 1000px;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 50px;
+  }
+
+  .exercise-card input[type="text"] {
+    flex: 1;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 30px; /* 👉 Заокруглення */
+    background-color: #e0e0e0;
+    outline:none;
+    height: 40px;
+    font-size: 16px;
+  }
+
+  .save-button {
+    background-color: #4a8eff;
+    color: white;
+    border: none;
+    border-radius: 30px; /* 👉 Заокруглення */
+    padding: 10px 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+    height: 40px;
+    display: flex;               /* 👉 Центрування тексту */
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+  }
+
+  .exercise-card h2 {
+    color: #4a8eff;
+    margin-bottom: 50px;
+  }
+
+  .exercise-image {
+    width: 100%;
+    object-fit: contain; /* Це дозволить зображенню зберігати пропорції */
+    border-radius: 20px;
+    margin-bottom: 20px;
+  }
+
+  .instruction-list {
+    text-align: left;
+    background-color: #fff;
+    padding: 15px 20px;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+
+  
+  .input-section {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    height: 60px;
+  }
+
+.exercise-card>img{
+    width: 457px;
+    border-radius:50px;
+}
 
 
