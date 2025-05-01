@@ -105,10 +105,10 @@ class SaveTask(View):
         })
 
 
-pages_views=[PageView("home.html",links=pages),
+pages_views=[PageView("home.html",links=pages,callback_dinamic_params=draw_home),
            PageView("personal_office.html",links=pages
                     ,callback_dinamic_params=draw_personall_data),
-           PageView("rating.html",links=pages),
+           PageView("rating.html",links=pages,callback_dinamic_params=draw_rating),
            PageView("activity.html",links=pages,callback_dinamic_params=draw_activity),
            PageView("shop.html",links=pages,
                     callback_dinamic_params=draw_shop)]

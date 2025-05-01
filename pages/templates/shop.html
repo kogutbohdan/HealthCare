@@ -1,20 +1,4 @@
 {%extends "./base-page.html"%}
 {%block content-page%}
-<div class="grid">
-    {%for icon in icons%}
-    {% if forloop.counter0 == 4 %}
-    <div class="item {% if forloop.counter0 < 3 %}first-item{% endif %}">
-        <div class="">
-          Your Coins:
-          <span id="many-print">{{many}}</span>
-        </div>
-    </div>
-    {% endif %}
-    <form action="buy_icon/{{icon.id}}" class="item {% if forloop.counter0 < 3 %}first-item{% endif %}">
-      {%csrf_token%}
-      <img src="{{icon.image.url}}" class="icon-img">
-      <button class="buy-button" type="submit">Buy {{icon.costs}}</button>
-    </form>
-    {%endfor%}
-</div>
+{%include "shop-element.html"%}
 {%endblock%}

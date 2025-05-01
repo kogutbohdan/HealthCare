@@ -19,6 +19,7 @@ def draw_shop(request,params):
     icons_list=list(filter(lambda icon:icon not in user.things.all(),icons_list))
     params["many"]=user.many
     params["icons"]=icons_list
+    params["center"]=len(icons_list)//2
 
 def draw_activity(request,params):
     user=MyUser.objects.get(id=request.session.get("user_id"))
@@ -28,3 +29,12 @@ def draw_activity(request,params):
         tasks_list.append({"img":task.image.url,"text":task.text.split("."),
                            "many":task.many,"points":task.points,"id":task.id})
     params["tasks"]=tasks_list
+def draw_rating(request,params):
+    users=MyUser.objects.all().order_by("-points")
+    params["users"]=users
+
+def draw_home(request,params):
+    draw_personall_data(request,params)
+    draw_shop(request,params)
+    users=MyUser.objects.all().order_by("-points")[:10]
+    params["users"]=users

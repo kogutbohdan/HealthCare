@@ -271,4 +271,11 @@ form.exe-box{
     border-radius:50px;
 }
 
+.top-box>.pla{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 0px;
+}
+
 

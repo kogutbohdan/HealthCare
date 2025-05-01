@@ -1,0 +1,12 @@
+<div class="exe-box">
+    <h1 class="place">Place in rating:</h1>
+</div>
+<div class="top-box">
+    <b>Rating</b>
+    {%for user in users%}
+    <div class="pla">
+        <img width="50" src="{{user.icon.url}}" alt="">
+         {{user.username}} {{user.points}}
+    </div>
+    {%endfor%}
+</div>

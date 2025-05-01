@@ -1,11 +1,12 @@
 {%extends "./base-page.html"%}
 {%block content-page%}
-<div class ="icon-conteiner">
-    <div class="icon">
-        
+<div class="content-block">
+    {%include "icon-conteiner.html"%}
+    {%include "rating-elem.html"%}
+    <div class="exe-box">
+        <h1 class="place">marcket:</h1>
     </div>
-</div>
-<div class="exe-box">
-    <h1 class="place">Place in rating:</h1>
+    {%include "shop-element.html"%}
+    {%include "statistics.html"%}
 </div>
 {%endblock%}

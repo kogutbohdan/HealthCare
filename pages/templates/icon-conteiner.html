@@ -1,0 +1,10 @@
+<div class ="icon-conteiner">
+    <img src="{{icon}}" id="icon" class="icon">
+</div>
+<form id="icons-form" action="change_icon/" class="icons-form not-activate">
+    {%csrf_token%}
+    <input type="hidden" id="imageUrl" name="imageUrl" />
+    {%for thing in things%}
+    <img src="{{thing.image.url}}" alt="">
+    {%endfor%}
+</form>
