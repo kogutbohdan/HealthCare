@@ -13,7 +13,11 @@ class Statistics(models.Model):
     counts=models.IntegerField(default=0)
     coins=models.IntegerField(default=0)
     points=models.IntegerField(default=0)
+
+class DefaultIcons(models.Model):
+    image=models.ImageField(upload_to="icons/")
     
 admin.site.register(ShopModel)
 admin.site.register(Tasks)
 admin.site.register(Statistics)
+admin.site.register(DefaultIcons)

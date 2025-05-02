@@ -92,7 +92,7 @@ class SaveTask(View):
             task=user.tasks.get(id=id)
             user.many+=task.many*number
             user.points+=task.points*number
-            user.tasks.remove(task)
+            #user.tasks.remove(task)
             user.save()
             previus_statistics=Statistics.objects.filter(task=task).order_by("-counts").first()
             statistic=Statistics(number=number,counts=previus_statistics.counts+1 if previus_statistics else 1,task=task,user=user,coins=task.many*number,points=task.points*number)

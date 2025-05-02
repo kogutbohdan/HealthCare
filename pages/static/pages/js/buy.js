@@ -14,6 +14,7 @@ const buyIcon = (path, form) => {
 }
 
 const saveTask = async (path, form, main) => {
-    if (await submit(path, form, main))
-        form.parentElement.remove()
+    if (await submit(path, form, main)){
+        //form.parentElement.remove()
+    }
 }
