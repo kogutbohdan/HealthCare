@@ -2,7 +2,9 @@
     <div class="main-box">
         <header class="container">
             {% for link in links%}
+            {%if link.name in draw_links %}
             <a class="btn" href="{{link.url}}">{{link.name}}</a>
+            {%endif%}
             {%endfor%}
         </header>
         {%block content-page%}

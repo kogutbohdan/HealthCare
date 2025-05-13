@@ -30,9 +30,12 @@ def draw_activity(request,params):
         tasks_list.append({"img":task.image.url,"text":task.text.split("."),
                            "many":task.many,"points":task.points,"id":task.id})
     params["tasks"]=tasks_list
+
 def draw_rating(request,params):
     users=MyUser.objects.all().order_by("-points")
+    user=MyUser.objects.get(id=request.session.get("user_id"))
     params["users"]=users
+    params["rating"]=user.rating
 
 def draw_home(request,params):
     draw_personall_data(request,params)

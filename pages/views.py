@@ -86,6 +86,7 @@ class ChangeIconView(View):
 class SaveTask(View):
     def post(self,request,id):
         user=MyUser.objects.get(id=request.session.get("user_id"))
+        users=MyUser.objects.all().order_by("-points")
         number=request.POST.get("number")
         if number.isdigit():
             number=int(number)
@@ -94,6 +95,11 @@ class SaveTask(View):
             user.points+=task.points*number
             #user.tasks.remove(task)
             user.save()
+            raiting=1
+            for user in users:
+                user.rating=raiting
+                user.save()
+                raiting+=1
             previus_statistics=Statistics.objects.filter(task=task).order_by("-counts").first()
             statistic=Statistics(number=number,counts=previus_statistics.counts+1 if previus_statistics else 1,task=task,user=user,coins=task.many*number,points=task.points*number)
             statistic.save()
@@ -105,13 +111,13 @@ class SaveTask(View):
         })
 
 
-pages_views=[PageView("home.html",links=pages,callback_dinamic_params=draw_home),
+pages_views=[PageView("home.html",links=pages,callback_dinamic_params=draw_home,draw_links=["Profile","Market","Rating"]),
            PageView("personal_office.html",links=pages
-                    ,callback_dinamic_params=draw_personall_data),
-           PageView("rating.html",links=pages,callback_dinamic_params=draw_rating),
-           PageView("activity.html",links=pages,callback_dinamic_params=draw_activity),
+                    ,callback_dinamic_params=draw_personall_data,draw_links=["Home","Market","Activity"]),
+           PageView("rating.html",links=pages,callback_dinamic_params=draw_rating,draw_links=["Profile","Market","Home"]),
+           PageView("activity.html",links=pages,callback_dinamic_params=draw_activity,draw_links=["Market","Profile","Home"]),
            PageView("shop.html",links=pages,
-                    callback_dinamic_params=draw_shop)]
+                    callback_dinamic_params=draw_shop,draw_links=["Profile","Home","Rating"])]
 
 for i in range(len(pages)):
     pages[i]["view"]=pages_views[i]

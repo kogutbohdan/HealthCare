@@ -26,7 +26,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("",include("registretion.urls")),
     path("",include("verification.urls")),
-    path("",include("pages.urls"))
+    path("",include("pages.urls")),
 ]
 
 if settings.DEBUG:

@@ -1,12 +1,12 @@
 async function removeForm(path, form, callback) {
     const result = await sentForm(path, form)
     if (result.status == "ok") {
-        callback()
+        callback(result)
     }
 }
 
 const buyIcon = (path, form) => {
-    removeForm(path, form, () => {
+    removeForm(path, form, (result) => {
         form.remove()
         const coinCounter = document.querySelector("#many-print")
         coinCounter.textContent = result["many"]

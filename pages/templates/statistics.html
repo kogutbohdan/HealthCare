@@ -1,6 +1,5 @@
 {%for statistics in statistics_list%}
-<div class="exe-box statistic">
-        <div class="pla">
+        <div class="pla statistics-inform">
             <ul class="place">
                 <li>Назва вправи {{statistics.task.name}}</li>
                 <li>Скільки зроблено {{statistics.number}}</li>
@@ -9,5 +8,4 @@
                 <li>Cкільки ви получили балів {{statistics.points}}</li>
             </ul>
         </div>
-</div>
 {%endfor%}

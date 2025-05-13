@@ -2,14 +2,12 @@
 {%block content-page%}
 <div class="content-block">
     {%include "icon-conteiner.html"%}
-    <div class="exe-box">
+    <div class="exe-box info">
         <h1 class="place">Place in rating:{{rating}}</h1>
-    </div>
-    <div class="exe-box">
-        <h1 class="place">Name:{{username}}</h1>
+        <h1 class="place">{{username}}</h1>
     </div>
     {%include "statistics.html"%}
-    <form action="save_size_user/" class="exe-box">
+    <form action="save_size_user/" class="exe-box margin-top">
         {%csrf_token%}
         <p class="place">weight:<input class="place" value="{{weight}}" type="text" name="weight"></p>
         <p class="place">height:<input class="place" value="{{height}}" type="text" name="height"></p>
